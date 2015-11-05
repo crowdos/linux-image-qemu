@@ -1,0 +1,11 @@
+This patch adds the needed non-standard resolution 400x600
+--- a/linux/drivers/gpu/drm/qxl/qxl_display.c
++++ b/linux/drivers/gpu/drm/qxl/qxl_display.c
+@@ -170,6 +170,7 @@
+ 	int w;
+ 	int h;
+ } common_modes[] = {
++        { 400,  600},
+ 	{ 640,  480},
+ 	{ 720,  480},
+ 	{ 800,  600},
