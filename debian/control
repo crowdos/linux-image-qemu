@@ -20,10 +20,3 @@ Provides: linux-headers
 Architecture: all
 Description: Linux image for qemu headers
  Linux image for qemu headers
-
-Package: linux-firmware-qemu
-Depends: ${misc:Depends}
-Provides: linux-firmware
-Architecture: all
-Description: Linux image for qemu firmware
- Linux image for qemu firmware
