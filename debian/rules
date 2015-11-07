@@ -24,7 +24,7 @@ override_dh_auto_install:
 		INSTALL_PATH=$(PWD)/debian/tmp/boot/ \
 		INSTALLKERNEL=/bin/true \
 		modules_install headers_install install
-
+	depmod -a -b $(PWD)/debian/tmp/ $(VERSION)
 	dh_install --fail-missing
 
 override_dh_auto_clean:

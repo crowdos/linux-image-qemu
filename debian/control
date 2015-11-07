@@ -3,7 +3,7 @@ Section: kernel
 Priority: optional
 Maintainer: Mohammed Sameer <msameer@foolab.org>
 Standards-Version: 3.9.5
-Build-Depends: debhelper, quilt, bc
+Build-Depends: debhelper, quilt, bc, kmod
 Build-Conflicts: lilo
 Homepage: https://www.kernel.org/
 
