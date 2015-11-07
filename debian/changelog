@@ -1,0 +1,5 @@
+linux-qemu (4.3.0-1cos) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Mohammed Sameer <msameer@foolab.org>  Thu, 05 Nov 2015 03:59:51 +0200

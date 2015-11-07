@@ -1,0 +1,29 @@
+Source: linux-qemu
+Section: kernel
+Priority: optional
+Maintainer: Mohammed Sameer <msameer@foolab.org>
+Standards-Version: 3.9.5
+Build-Depends: debhelper, quilt, bc
+Build-Conflicts: lilo
+Homepage: https://www.kernel.org/
+
+Package: linux-image-qemu
+Depends: kmod, util-linux, ${misc:Depends}
+Provides: linux-image
+Architecture: all
+Description: Linux image for qemu
+ Linux kernel and modules needed for qemu
+
+Package: linux-headers-qemu
+Depends: ${misc:Depends}
+Provides: linux-headers
+Architecture: all
+Description: Linux image for qemu headers
+ Linux image for qemu headers
+
+Package: linux-firmware-qemu
+Depends: ${misc:Depends}
+Provides: linux-firmware
+Architecture: all
+Description: Linux image for qemu firmware
+ Linux image for qemu firmware
