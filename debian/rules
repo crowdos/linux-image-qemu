@@ -9,6 +9,8 @@ REVISION=-$(shell dpkg-parsechangelog -S version|cut -d - -f 2)
 %:
 	dh $@ --with quilt --sourcedirectory=linux --parallel
 
+# linux/.scmversion from here:
+# http://stackoverflow.com/questions/19333918/dont-add-to-linux-kernel-version
 override_dh_auto_build:
 	touch linux/.scmversion
 	dh_quilt_patch
