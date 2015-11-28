@@ -5,6 +5,7 @@
 
 VERSION=$(shell dpkg-parsechangelog -S version)
 REVISION=-$(shell dpkg-parsechangelog -S version|cut -d - -f 2)
+COS_KERNEL_ARCH=$(shell dpkg --print-architecture)
 
 %:
 	dh $@ --with quilt --sourcedirectory=linux --parallel
@@ -14,13 +15,13 @@ REVISION=-$(shell dpkg-parsechangelog -S version|cut -d - -f 2)
 override_dh_auto_build:
 	touch linux/.scmversion
 	dh_quilt_patch
-	make -C linux KCONFIG_CONFIG=../kernel-config EXTRAVERSION=$(REVISION)
+	make -C linux KCONFIG_CONFIG=../kernel-config-$(COS_KERNEL_ARCH) EXTRAVERSION=$(REVISION)
 
 override_dh_auto_install:
 	mkdir -p $(PWD)/debian/tmp/boot/
 	make -C linux \
 		EXTRAVERSION=$(REVISION) \
-		KCONFIG_CONFIG=../kernel-config \
+		KCONFIG_CONFIG=../kernel-config-$(COS_KERNEL_ARCH) \
 		INSTALL_MOD_PATH=$(PWD)/debian/tmp \
 		INSTALL_HDR_PATH=$(PWD)/debian/tmp/usr/ \
 		INSTALL_PATH=$(PWD)/debian/tmp/boot/ \
@@ -30,7 +31,7 @@ override_dh_auto_install:
 	dh_install --fail-missing
 
 override_dh_auto_clean:
-	make -C linux KCONFIG_CONFIG=../kernel-config EXTRAVERSION=$(REVISION) distclean
+	make -C linux KCONFIG_CONFIG=../kernel-config-$(COS_KERNEL_ARCH) EXTRAVERSION=$(REVISION) distclean
 	rm -rf linux/.scmversion
-	rm -rf kernel-config.old
+	rm -rf kernel-config-$(COS_KERNEL_ARCH).old
 	dh_auto_clean
