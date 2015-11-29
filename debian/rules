@@ -7,6 +7,12 @@ VERSION=$(shell dpkg-parsechangelog -S version)
 REVISION=-$(shell dpkg-parsechangelog -S version|cut -d - -f 2)
 COS_KERNEL_ARCH=$(shell dpkg --print-architecture)
 
+ifeq ($(COS_KERNEL_ARCH),armhf)
+ARCH=arm
+else
+ARCH=x86
+endif
+
 %:
 	dh $@ --with quilt --sourcedirectory=linux --parallel
 
