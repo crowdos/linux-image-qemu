@@ -10,13 +10,13 @@ Homepage: https://www.kernel.org/
 Package: linux-image-qemu
 Depends: kmod, util-linux, ${misc:Depends}
 Provides: linux-image
-Architecture: all
+Architecture: any
 Description: Linux image for qemu
  Linux kernel and modules needed for qemu
 
 Package: linux-headers-qemu
 Depends: ${misc:Depends}
 Provides: linux-headers
-Architecture: all
+Architecture: any
 Description: Linux image for qemu headers
  Linux image for qemu headers
